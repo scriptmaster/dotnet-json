@@ -23,7 +23,7 @@ namespace dotnet_json.Commands
         protected override async Task<int> ExecuteAsync()
         {
             var key = GetParameterValue(Key) ?? throw new ArgumentException("Missing argument <key>");
-            var value = GetParameterValue(Value) ?? throw new ArgumentException("Missing argument <value>");
+            var value = GetParameterValue(Value) ?? string.Empty; // throw new ArgumentException("Missing argument <value>");
 
             JsonDocument document;
 
