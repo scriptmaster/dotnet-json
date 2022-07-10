@@ -36,7 +36,7 @@ jobs:
           dotnet publish -c Release -o ./output/osx --self-contained true -r osx-x64 -p:PublishSingleFile=true -p:PublishTrimmed=true
 
       - name: Upload windows release asset
-        if: success() && steps.publish_nuget.outputs.version != ''
+        if: success() # && steps.publish_nuget.outputs.version != ''
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
@@ -47,7 +47,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload linux release asset
-        if: success() && steps.publish_nuget.outputs.version != ''
+        if: success() #  && steps.publish_nuget.outputs.version != ''
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
@@ -58,7 +58,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload osx release asset
-        if: success() && steps.publish_nuget.outputs.version != ''
+        if: success() #  && steps.publish_nuget.outputs.version != ''
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
@@ -67,4 +67,3 @@ jobs:
           asset_content_type: application/json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
