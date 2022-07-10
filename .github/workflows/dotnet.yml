@@ -27,19 +27,22 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
 
-    - name: Git Version
-      id: git_version
-      uses: codacy/git-version@2.5.4
-      with:
-        prefix: v
+    #- name: Git Version
+    #  id: git_version
+    #  uses: codacy/git-version@2.5.4
+    #  with:
+    #    prefix: v
+    - name: Version
+      id: version
+      run: echo v1.0.2
 
     - name: Create release
       id: create_release
       if: success()
       uses: actions/create-release@v1
       with:
-        tag_name: ${{ steps.git_version.outputs.version }}
-        release_name: ${{ steps.git_version.outputs.version }}
+        tag_name: ${{ steps.version.outputs.version }}
+        release_name: ${{ steps.version.outputs.version }}
         body: ""
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
