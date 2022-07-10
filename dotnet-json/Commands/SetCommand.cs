@@ -9,10 +9,9 @@ namespace dotnet_json.Commands
     public class SetCommand : CommandBase, ICommandHandler
     {
         private Argument<string> Key = new Argument<string>("key", "The key to set (use ':' to set nested object and use index numbers to set array values eg. nested:key or nested:1:key)") { Arity = ArgumentArity.ExactlyOne };
+        private Argument<string> Value = new Argument<string>(name: "value", getDefaultValue: () => "", description: "The value to set") { Arity = ArgumentArity.ZeroOrOne };
 
-        private Argument<string> Value = new Argument<string>("value", "The value to set") { Arity = ArgumentArity.ExactlyOne };
-
-        public SetCommand() : base("set", "set a value in a json file")
+        public SetCommand() : base("set", "Set a value in a json file")
         {
             AddArgument(Key);
             AddArgument(Value);

@@ -1,0 +1,6 @@
+{
+  "EmailConfiguration": {
+    "SmtpServer": "localhost",
+    "SmtpUsername": ""
+  }
+}

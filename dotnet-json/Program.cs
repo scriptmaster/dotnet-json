@@ -14,7 +14,7 @@ namespace dotnet_json
 
         internal static RootCommand CreateRootCommand()
         {
-            var root = new RootCommand("JSON .NET Global Tool");
+            var root = new RootCommand("dotnet-json: A cicd tool");
 
             root.AddCommand(new MergeCommand());
             root.AddCommand(new SetCommand());
